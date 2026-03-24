@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-product",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-03-24T19:47:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.tesla.com/",
+    "originPage": "Tesla homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "product-showcase",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + category + name + pricing + 2 CTAs",
+    "buttonCount": 2,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product listing pages",
+      "vehicle or item showcases",
+      "catalog pages with images and CTAs"
+    ],
+    "notSuitableFor": [
+      "text-only card lists",
+      "blog article grids",
+      "icon-based feature lists"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-24T19:47:00.000Z"
+  }
+}

@@ -240,11 +240,19 @@ a {
     font-weight: 500;
     text-decoration: none;
     border: 2px solid;
-    padding: 8px 12px;
+    padding: 10px 24px;
     box-sizing: border-box;
+    border-radius: 4px;
+    font-size: var(--body-font-size-s);
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s, opacity 0.3s;
 
     &.btn-outline {
       background: transparent;
+    }
+
+    &:hover {
+      opacity: 0.85;
     }
   }
 
@@ -383,3 +391,55 @@ aem-sidekick {
     opacity: 1;
   }
 }
+
+/* Dark section styles */
+.section.dark {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6,
+  & p {
+    color: var(--color-light);
+  }
+
+  & a {
+    color: var(--color-light);
+  }
+
+  & a.btn-primary {
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    border-color: var(--color-light);
+  }
+
+  & a.btn-primary.btn-outline {
+    color: var(--color-light);
+    background: transparent;
+    border-color: var(--color-light);
+  }
+
+  & a.btn-secondary {
+    color: var(--color-light);
+    background: transparent;
+    border-color: var(--color-gray-400);
+  }
+
+  & > .default-content {
+    text-align: center;
+    padding: 80px 24px 40px;
+  }
+}
+
+/* Button group layout */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+

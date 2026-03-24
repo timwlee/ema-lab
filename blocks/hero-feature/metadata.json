@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-feature",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-03-24T19:47:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.tesla.com/",
+    "originPage": "Tesla homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "feature-highlight",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background image + heading + subheading + 2 CTAs",
+    "buttonCount": 2,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "feature highlight sections",
+      "product promotion banners",
+      "full-width call-to-action sections"
+    ],
+    "notSuitableFor": [
+      "text-only hero sections",
+      "minimal above-fold headers",
+      "video hero sections"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-24T19:47:00.000Z"
+  }
+}

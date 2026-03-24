@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-promo",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-03-24T19:47:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.tesla.com/",
+    "originPage": "Tesla homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "promo-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + heading + subheading + 2 CTAs",
+    "buttonCount": 2,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage hero carousels",
+      "promotional landing pages",
+      "product showcase rotators"
+    ],
+    "notSuitableFor": [
+      "image-only galleries",
+      "testimonial sliders",
+      "text-only content"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-24T19:47:00.000Z"
+  }
+}
