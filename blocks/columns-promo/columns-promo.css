@@ -1,0 +1,145 @@
+.columns-promo > div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.columns-promo > div > div {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  box-sizing: border-box;
+  background-color: var(--color-gray-100);
+}
+
+/* Image promo card style */
+.columns-promo:not(.columns-promo-stats) > div > div {
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.columns-promo:not(.columns-promo-stats) > div > div:hover {
+  transform: scale(1.01);
+}
+
+/* Image fills the card background */
+.columns-promo:not(.columns-promo-stats) > div > div img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Gradient overlay for readability */
+.columns-promo:not(.columns-promo-stats) > div > div::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 0 0 / 60%) 0%, rgb(0 0 0 / 10%) 60%, transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.columns-promo:not(.columns-promo-stats) > div > div h2,
+.columns-promo:not(.columns-promo-stats) > div > div h5,
+.columns-promo:not(.columns-promo-stats) > div > div p {
+  position: relative;
+  z-index: 2;
+  color: white;
+  margin: 0 0 4px;
+}
+
+.columns-promo:not(.columns-promo-stats) > div > div h2 {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.columns-promo:not(.columns-promo-stats) > div > div h5 {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(255 255 255 / 85%);
+  margin-bottom: 12px;
+}
+
+.columns-promo:not(.columns-promo-stats) > div > div p {
+  margin-bottom: 0;
+}
+
+.columns-promo:not(.columns-promo-stats) > div > div a.btn {
+  position: relative;
+  z-index: 2;
+}
+
+.columns-promo:not(.columns-promo-stats) > div > div a.btn-primary {
+  background-color: rgb(255 255 255 / 85%);
+  color: #171a20;
+  border-color: rgb(255 255 255 / 85%);
+}
+
+.columns-promo:not(.columns-promo-stats) > div > div a.btn-primary:hover {
+  background-color: white;
+}
+
+/* Stats variant */
+.columns-promo.columns-promo-stats > div {
+  gap: 32px;
+}
+
+.columns-promo.columns-promo-stats > div > div {
+  min-height: auto;
+  background: transparent;
+  text-align: center;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.columns-promo.columns-promo-stats > div > div p {
+  font-size: 48px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  line-height: 1.1;
+}
+
+.columns-promo.columns-promo-stats > div > div h4 {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--color-gray-500);
+}
+
+/* Tablet+ */
+@media (width >= 600px) {
+  .columns-promo > div {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .columns-promo > div > div {
+    flex: 1;
+    min-height: 360px;
+  }
+
+  .columns-promo:not(.columns-promo-stats) > div > div h2 {
+    font-size: 32px;
+  }
+
+  .columns-promo.columns-promo-stats > div > div p {
+    font-size: 56px;
+  }
+}
+
+/* Large desktop */
+@media (width >= 1200px) {
+  .columns-promo > div > div {
+    min-height: 400px;
+    padding: 32px;
+  }
+}

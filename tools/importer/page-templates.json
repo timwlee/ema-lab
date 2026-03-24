@@ -1,0 +1,104 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.tesla.com/"
+      ],
+      "description": "Tesla homepage featuring vehicle lineup, energy products, and brand messaging with full-width hero sections",
+      "blocks": [
+        {
+          "name": "carousel-promo",
+          "instances": [
+            ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(1)"
+          ]
+        },
+        {
+          "name": "cards-product",
+          "instances": [
+            ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(2)",
+            ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(6)"
+          ]
+        },
+        {
+          "name": "columns-promo",
+          "instances": [
+            ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(3)",
+            ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(5)"
+          ]
+        },
+        {
+          "name": "hero-feature",
+          "instances": [
+            ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(4) .tds-layout__col--main"
+          ]
+        },
+        {
+          "name": "section-metadata",
+          "instances": [
+            ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(4)"
+          ],
+          "section": "dark"
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero Carousel",
+          "selector": ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(1)",
+          "style": null,
+          "blocks": ["carousel-promo"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Vehicle Lineup",
+          "selector": ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(2)",
+          "style": null,
+          "blocks": ["cards-product"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Promotional Grid",
+          "selector": ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(3)",
+          "style": null,
+          "blocks": ["columns-promo"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "FSD Feature and Standard Features",
+          "selector": ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(4)",
+          "style": "dark",
+          "blocks": ["hero-feature"],
+          "defaultContent": ["h1", "button"]
+        },
+        {
+          "id": "section-5",
+          "name": "Find Your Charge",
+          "selector": ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(5)",
+          "style": null,
+          "blocks": ["columns-promo"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-6",
+          "name": "Energy Products",
+          "selector": ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(6)",
+          "style": "dark",
+          "blocks": ["cards-product"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-7",
+          "name": "Footnotes",
+          "selector": ".tcl-homepage-no-scroll-snapping > .tcl-section:nth-child(7)",
+          "style": null,
+          "blocks": [],
+          "defaultContent": ["p"]
+        }
+      ]
+    }
+  ]
+}

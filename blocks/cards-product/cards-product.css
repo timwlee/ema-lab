@@ -1,0 +1,216 @@
+.cards-product {
+  position: relative;
+  padding: 0 24px;
+}
+
+.cards-product > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.cards-product > ul::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-product > ul > li {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  background-color: var(--color-background);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cards-product > ul > li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+}
+
+.cards-product .cards-product-card-image {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.cards-product > ul > li img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cards-product > ul > li:hover img {
+  transform: scale(1.03);
+}
+
+.cards-product .cards-product-card-body {
+  padding: 16px 20px 20px;
+}
+
+.cards-product .cards-product-card-body h6 {
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-gray-500);
+  margin: 0 0 4px;
+}
+
+.cards-product .cards-product-card-body h1 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.cards-product .cards-product-card-body h5 {
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0 0 16px;
+}
+
+.cards-product .cards-product-card-body h5 a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cards-product .cards-product-card-body .btn-group {
+  gap: 8px;
+}
+
+.cards-product .cards-product-card-body a.btn {
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 4px;
+}
+
+/* Navigation buttons */
+.cards-product .cards-product-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgb(0 0 0 / 6%);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+  transition: background-color 0.3s, opacity 0.3s;
+  cursor: pointer;
+}
+
+.cards-product .cards-product-nav::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--color-gray-700);
+  border-bottom: 0;
+  border-left: 0;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 1px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.cards-product .cards-product-nav-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 1px);
+}
+
+.cards-product .cards-product-nav-prev {
+  left: 8px;
+}
+
+.cards-product .cards-product-nav-next {
+  right: 8px;
+}
+
+.cards-product .cards-product-nav:hover {
+  background-color: rgb(0 0 0 / 12%);
+}
+
+.cards-product .cards-product-nav.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Dark section variant */
+.section.dark .cards-product > ul > li {
+  background-color: #111;
+}
+
+.section.dark .cards-product .cards-product-card-body h6 {
+  color: var(--color-gray-400);
+}
+
+.section.dark .cards-product .cards-product-card-body h1,
+.section.dark .cards-product .cards-product-card-body h5,
+.section.dark .cards-product .cards-product-card-body p {
+  color: var(--color-light);
+}
+
+.section.dark .cards-product .cards-product-card-body h5 a {
+  color: var(--color-light);
+}
+
+.section.dark .cards-product .cards-product-card-body a.btn-primary {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border-color: var(--color-light);
+}
+
+.section.dark .cards-product .cards-product-card-body a.btn-secondary {
+  color: var(--color-light);
+  background: transparent;
+  border-color: var(--color-gray-500);
+}
+
+.section.dark .cards-product .cards-product-nav {
+  background-color: rgb(255 255 255 / 10%);
+}
+
+.section.dark .cards-product .cards-product-nav::after {
+  border-color: var(--color-light);
+}
+
+.section.dark .cards-product .cards-product-nav:hover {
+  background-color: rgb(255 255 255 / 20%);
+}
+
+/* Mobile */
+@media (width <= 600px) {
+  .cards-product {
+    padding: 0 16px;
+  }
+
+  .cards-product > ul > li {
+    flex: 0 0 260px;
+  }
+
+  .cards-product .cards-product-nav {
+    display: none;
+  }
+}
+
+/* Tablet+ */
+@media (width >= 600px) and (width < 1200px) {
+  .cards-product > ul > li {
+    flex: 0 0 300px;
+  }
+}
+
+/* Large desktop */
+@media (width >= 1200px) {
+  .cards-product > ul > li {
+    flex: 0 0 320px;
+  }
+}
