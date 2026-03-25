@@ -60,6 +60,14 @@
   inset: 0;
 }
 
+.carousel-promo .carousel-promo-slide .carousel-promo-slide-image video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Gradient overlay on slides */
 .carousel-promo .carousel-promo-slide::after {
   content: '';
@@ -237,7 +245,7 @@
 }
 
 /* Slide text-only placeholder (e.g., "FSD Video Background") */
-.carousel-promo .carousel-promo-slide .carousel-promo-slide-image:not(:has(picture), :has(img)) {
+.carousel-promo .carousel-promo-slide .carousel-promo-slide-image:not(:has(picture), :has(img), :has(video)) {
   background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
 }
 

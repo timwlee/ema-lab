@@ -5,14 +5,25 @@ function updateActiveSlide(slide) {
 
   const slides = block.querySelectorAll('.carousel-promo-slide');
   slides.forEach((aSlide, idx) => {
-    aSlide.setAttribute('aria-hidden', idx !== slideIndex);
+    const isActive = idx === slideIndex;
+    aSlide.setAttribute('aria-hidden', !isActive);
     aSlide.querySelectorAll('a').forEach((link) => {
-      if (idx !== slideIndex) {
+      if (!isActive) {
         link.setAttribute('tabindex', '-1');
       } else {
         link.removeAttribute('tabindex');
       }
     });
+
+    // Play/pause videos based on slide visibility
+    const video = aSlide.querySelector('video');
+    if (video) {
+      if (isActive) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
   });
 
   const indicators = block.querySelectorAll('.carousel-promo-slide-indicator');
