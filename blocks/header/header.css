@@ -126,6 +126,96 @@ header {
     }
   }
 
+  /* Mega menu content overrides */
+  .mega-menu {
+    a {
+      color: #393c41;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 8px 0 4px;
+      color: #171a20;
+    }
+
+    img {
+      max-width: 160px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-block: 0;
+    }
+  }
+
+  .mega-product-card {
+    text-align: center;
+    padding: 12px 8px;
+
+    p {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    a {
+      font-size: 13px;
+      text-decoration: underline;
+      font-weight: 400;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .mega-links {
+    a {
+      display: block;
+      padding: 6px 0;
+      font-size: 14px;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    li {
+      margin-block: 0;
+    }
+  }
+
+  .mega-discover-col {
+    h3 {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #5c5e62;
+      margin: 0 0 8px;
+    }
+
+    a {
+      display: block;
+      padding: 6px 0;
+      font-size: 14px;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    li {
+      margin-block: 0;
+    }
+  }
+
   .brand-section {
     grid-area: brand;
 
@@ -276,12 +366,52 @@ header {
 
     .main-nav-section {
       display: block;
+      overflow-y: auto;
+      max-height: calc(100vh - var(--header-height));
     }
 
     .actions-section {
       .action-wrapper.toggle,
       .action-wrapper.globe {
         display: block;
+      }
+    }
+
+    /* Mobile mega menu overrides */
+    .mega-menu {
+      background-color: transparent;
+      padding: 16px;
+
+      a {
+        color: var(--header-text);
+      }
+
+      h3 {
+        color: var(--header-text);
+      }
+
+      .mega-products .default-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .mega-links {
+        border-top: 1px solid rgb(255 255 255 / 20%);
+        padding-top: 16px;
+        margin-top: 16px;
+      }
+
+      .mega-discover .default-content {
+        display: block;
+      }
+
+      .mega-discover-col {
+        margin-bottom: 16px;
+
+        h3 {
+          color: rgb(255 255 255 / 60%);
+        }
       }
     }
   }
@@ -346,10 +476,15 @@ header {
         white-space: nowrap;
         border-radius: 4px;
         transition: background-color 0.2s;
+        cursor: pointer;
 
         &:hover {
           background-color: rgb(255 255 255 / 15%);
         }
+      }
+
+      .is-open > p > .main-nav-link {
+        background-color: rgb(255 255 255 / 15%);
       }
     }
 
@@ -391,11 +526,12 @@ header {
 
     .menu,
     .mega-menu {
-      background-color: var(--color-shaded);
-      padding: var(--spacing-xl) 0;
+      background-color: white;
+      padding: 40px 0;
       position: absolute;
       left: 0;
       right: 0;
+      box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
 
       &.language {
         display: none;
@@ -414,13 +550,37 @@ header {
     .mega-menu {
       > .fragment-content {
         display: grid;
-        grid-template-columns: repeat(var(--mega-columns), 1fr);
+        grid-template-columns: 1fr auto;
         max-width: var(--grid-container-width);
         margin: 0 auto;
+        gap: 40px;
 
         .section {
           margin-block: initial;
         }
+      }
+
+      .mega-products .default-content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+
+      .mega-links {
+        min-width: 200px;
+        border-left: 1px solid #e5e5e5;
+        padding-left: 40px;
+      }
+
+      .mega-discover .default-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+
+      /* Single-section layout (Discover) */
+      &:has(.mega-discover) > .fragment-content {
+        grid-template-columns: 1fr;
       }
     }
 

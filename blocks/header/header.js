@@ -11,6 +11,13 @@ const HEADER_ACTIONS = [
   '/tools/widgets/toggle',
 ];
 
+const MEGA_MENU_MAP = {
+  vehicles: `${HEADER_PATH}/vehicles`,
+  energy: `${HEADER_PATH}/energy`,
+  charging: `${HEADER_PATH}/charging`,
+  discover: `${HEADER_PATH}/discover`,
+};
+
 function closeAllMenus() {
   const openMenus = document.body.querySelectorAll('header .is-open');
   for (const openMenu of openMenus) {
@@ -110,29 +117,96 @@ async function decorateAction(header, pattern) {
   if (pattern === '/tools/widgets/toggle') decorateNavToggle(btn);
 }
 
-function decorateMenu() {
-  // TODO: finish single menu support
-  return null;
-}
+function prepareMegaMenu(fragment) {
+  // Strip button classes from all links in the mega menu
+  fragment.querySelectorAll('.button').forEach((btn) => {
+    btn.className = '';
+    const container = btn.closest('.button-container');
+    if (container) container.className = '';
+  });
 
-function decorateMegaMenu(li) {
-  const menu = li.querySelector('.fragment-content');
-  if (!menu) return null;
-  const wrapper = document.createElement('div');
-  wrapper.className = 'mega-menu';
-  wrapper.append(menu);
-  li.append(wrapper);
-  return wrapper;
+  const sections = fragment.querySelectorAll(':scope > .section');
+
+  if (sections.length >= 2) {
+    // Product grid + sidebar links layout
+    sections[0].classList.add('mega-products');
+    sections[1].classList.add('mega-links');
+
+    // Group product entries into cards
+    const wrapper = sections[0].querySelector('.default-content');
+    if (wrapper) {
+      const children = [...wrapper.children];
+      const cards = [];
+      let group = [];
+      for (const child of children) {
+        if (child.querySelector('img, picture') && group.length > 0) {
+          const card = document.createElement('div');
+          card.className = 'mega-product-card';
+          group.forEach((el) => card.append(el));
+          cards.push(card);
+          group = [];
+        }
+        group.push(child);
+      }
+      if (group.length) {
+        const card = document.createElement('div');
+        card.className = 'mega-product-card';
+        group.forEach((el) => card.append(el));
+        cards.push(card);
+      }
+      wrapper.replaceChildren(...cards);
+    }
+  } else if (sections.length === 1) {
+    // Multi-column links layout (Discover)
+    sections[0].classList.add('mega-discover');
+    const wrapper = sections[0].querySelector('.default-content');
+    if (wrapper) {
+      const children = [...wrapper.children];
+      const columns = [];
+      let col = [];
+      for (const child of children) {
+        if (child.tagName === 'H3' && col.length > 0) {
+          const div = document.createElement('div');
+          div.className = 'mega-discover-col';
+          col.forEach((el) => div.append(el));
+          columns.push(div);
+          col = [];
+        }
+        col.push(child);
+      }
+      if (col.length) {
+        const div = document.createElement('div');
+        div.className = 'mega-discover-col';
+        col.forEach((el) => div.append(el));
+        columns.push(div);
+      }
+      wrapper.replaceChildren(...columns);
+    }
+  }
 }
 
 function decorateNavItem(li) {
   li.classList.add('main-nav-item');
   const link = li.querySelector(':scope > p > a');
-  if (link) link.classList.add('main-nav-link');
-  const menu = decorateMegaMenu(li) || decorateMenu(li);
-  if (!(menu || link)) return;
-  link.addEventListener('click', (e) => {
+  if (!link) return;
+
+  link.classList.add('main-nav-link');
+  const key = link.textContent.trim().toLowerCase();
+  const megaPath = MEGA_MENU_MAP[key];
+  if (!megaPath) return;
+
+  link.addEventListener('click', async (e) => {
     e.preventDefault();
+    if (!li.querySelector('.mega-menu')) {
+      const fragment = await loadFragment(
+        `${locale.prefix}${megaPath}`,
+      );
+      prepareMegaMenu(fragment);
+      const wrapper = document.createElement('div');
+      wrapper.className = 'mega-menu';
+      wrapper.append(fragment);
+      li.append(wrapper);
+    }
     toggleMenu(li);
   });
 }
