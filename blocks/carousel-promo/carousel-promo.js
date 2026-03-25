@@ -100,6 +100,22 @@ function bindEvents(block) {
   });
 }
 
+function createVideoElement(container) {
+  const text = container.textContent.trim();
+  if (!text.startsWith('<video')) return;
+  const match = text.match(/src="([^"]+)"/);
+  if (!match) return;
+  const [, src] = match;
+  const video = document.createElement('video');
+  video.src = src;
+  video.autoplay = true;
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  container.textContent = '';
+  container.append(video);
+}
+
 function createSlide(row, slideIndex, carouselId) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
@@ -108,6 +124,7 @@ function createSlide(row, slideIndex, carouselId) {
 
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-promo-slide-${colIdx === 0 ? 'image' : 'content'}`);
+    if (colIdx === 0) createVideoElement(column);
     slide.append(column);
   });
 
