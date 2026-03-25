@@ -100,14 +100,13 @@ function bindEvents(block) {
   });
 }
 
-function createVideoElement(container) {
-  const text = container.textContent.trim();
-  if (!text.startsWith('<video')) return;
-  const match = text.match(/src="([^"]+)"/);
-  if (!match) return;
-  const [, src] = match;
+function createVideoFromLink(container) {
+  const link = container.querySelector('a[href]');
+  if (!link) return;
+  const href = link.getAttribute('href');
+  if (!href.endsWith('.mp4') && !href.endsWith('.webm')) return;
   const video = document.createElement('video');
-  video.src = src;
+  video.src = href;
   video.autoplay = true;
   video.muted = true;
   video.loop = true;
@@ -124,7 +123,7 @@ function createSlide(row, slideIndex, carouselId) {
 
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-promo-slide-${colIdx === 0 ? 'image' : 'content'}`);
-    if (colIdx === 0) createVideoElement(column);
+    if (colIdx === 0) createVideoFromLink(column);
     slide.append(column);
   });
 
